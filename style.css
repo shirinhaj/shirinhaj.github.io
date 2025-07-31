@@ -46,13 +46,13 @@ header .container {
 
 h1 {
   margin: 0;
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 600;
 }
 
 .subtitle {
   margin: 0 0 0 12px;
-  font-size: 1.1rem;
+  font-size: 1.7rem;
   color: var(--muted);
   flex: 1;
 }
