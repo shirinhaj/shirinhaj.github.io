@@ -1,187 +1,153 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shirin Hajahmadi — Postdoctoral Researcher</title>
+  <title>Shirin Hajahmadi</title>
   <meta name="description" content="Shirin Hajahmadi — XR • AI • Privacy & HCI" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #fff;
-      --text: #1f2937; /* slate-800 */
-      --muted: #6b7280; /* slate-500 */
-      --link: #0f766e; /* teal-700 */
-      --link-hover: #115e59; /* teal-800 */
-      --border: #e5e7eb; /* slate-200 */
-      --accent: #0ea5e9; /* sky-500 */
+      --text: #222;
+      --muted:#666;
+      --link:#0a58a8;
+      --link-hover:#073c71;
+      --border:#e5e5e5;
+      --bg:#ffffff;
     }
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.6}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;line-height:1.65}
     a{color:var(--link);text-decoration:none}
     a:hover{text-decoration:underline;color:var(--link-hover)}
-    h1,h2,h3{line-height:1.25}
-    h1{font-size:clamp(1.6rem,2.5vw,2rem);margin:0}
-    h2{font-size:clamp(1.15rem,2vw,1.35rem);margin:2.25rem 0 0.75rem}
-    h3{font-size:1rem;margin:1.25rem 0 0.25rem}
 
-    /* Layout */
-    .shell{display:grid;grid-template-columns: 320px 1fr;gap:48px;max-width:1200px;margin:0 auto;padding:24px 28px}
-    @media (max-width: 900px){.shell{grid-template-columns:1fr;gap:16px}}
+    /* Page width + columns (UChicago-like) */
+    .wrap{max-width:1050px;margin:0 auto;padding:18px 18px 40px}
+    .header{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--border);padding:16px 0 8px;margin-bottom:14px}
+    .name{font-family:"Source Serif 4", Georgia, "Times New Roman", serif;font-weight:600;font-size:34px;letter-spacing:.2px;color:#2a2a2a}
 
-    /* Left sidebar */
-    .sidebar{position:sticky;top:20px;align-self:start;height:fit-content;border:1px solid var(--border);border-radius:14px;padding:22px}
-    .photo{width:100%;max-width:180px;aspect-ratio:1/1;border-radius:12px;object-fit:cover;border:1px solid var(--border)}
-    .subtitle{color:var(--muted);font-weight:500;margin-top:6px}
-    .meta{margin-top:14px;font-size:0.95rem}
-    .meta a{display:inline-block;margin-right:8px}
+    .topnav{display:flex;gap:22px}
+    .topnav a{font-size:15px;letter-spacing:.3px;color:#2b2b2b}
 
-    nav ul{list-style:none;margin:16px 0 0;padding:0}
-    nav li{margin:4px 0}
-    nav a{display:block;padding:6px 8px;border-radius:8px;color:var(--text)}
-    nav a.active{background:#f1f5f9}
+    .grid{display:grid;grid-template-columns:290px 1fr;gap:32px}
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+      .sidebar{order:2}
+    }
+
+    /* Sidebar */
+    .sidebar{font-size:15px}
+    .portrait{width:100%;max-width:270px;border:1px solid var(--border)}
+    .side-section{margin-top:14px}
+    .side-title{font-variant:small-caps;color:#333;font-size:15px;margin:10px 0 6px}
+    .side-block{border-top:1px solid var(--border);padding-top:8px;margin-top:8px}
+    .side-block p{margin:4px 0}
 
     /* Main */
-    main{min-width:0}
-    .section{padding-bottom:20px;border-bottom:1px solid var(--border)}
-    .section:last-child{border-bottom:none}
-    .lead{font-size:1.02rem}
+    main h2{font-family:"Source Serif 4", Georgia, serif;font-weight:600;font-size:22px;margin:20px 0 6px}
+    main h3{font-size:17px;margin:18px 0 6px}
+    main p{margin:12px 0}
+    .lead{font-size:17px}
+    .em{font-style:italic}
 
     /* Lists */
-    .pub-list, .item-list{padding-left:1.15rem}
-    .pub-list li{margin:0.3rem 0}
+    ul{padding-left:20px;margin:8px 0}
+    li{margin:6px 0}
 
-    /* Tag chips */
-    .tags{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
-    .tag{border:1px solid var(--border);border-radius:999px;padding:2px 8px;font-size:0.85rem;color:var(--muted)}
-
-    /* Small utilities */
-    .row{display:flex;gap:16px;flex-wrap:wrap}
-    .btn{display:inline-block;border:1px solid var(--border);padding:8px 12px;border-radius:10px;font-weight:500}
-    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;border:1px solid var(--border);padding:1px 6px;border-radius:6px;background:#f8fafc;color:#0f172a}
-    .muted{color:var(--muted)}
-
-    footer{max-width:1200px;margin:24px auto 40px;padding:0 28px;color:var(--muted);font-size:0.95rem}
+    footer{margin-top:28px;padding-top:10px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
   </style>
 </head>
 <body>
-  <div class="shell">
-    <!-- LEFT: sticky profile + local nav -->
-    <aside class="sidebar">
-      <img src="images/shirin.jpg" alt="Shirin Hajahmadi portrait" class="photo" />
-      <h1>Shirin Hajahmadi</h1>
-      <div class="subtitle">Postdoctoral Researcher</div>
-      <div class="meta">
-        <div>XR • AI • Privacy & HCI</div>
-        <div>
-          <a href="mailto:shirin.hajahmadi@unibo.it">shirin.hajahmadi@unibo.it</a>
-        </div>
-        <div class="row" aria-label="links">
-          <a href="#" class="btn" aria-label="Google Scholar">Scholar</a>
-          <a href="#" class="btn" aria-label="DBLP">DBLP</a>
-          <a href="#" class="btn" aria-label="ORCID">ORCID</a>
-          <a href="Shirin-Hajahmadi-CV.pdf" class="btn" aria-label="CV">CV</a>
-        </div>
-      </div>
-      <nav aria-label="Section navigation">
-        <ul>
-          <li><a href="#about" class="toc-link active">About</a></li>
-          <li><a href="#research" class="toc-link">Research</a></li>
-          <li><a href="#professional" class="toc-link">Professional</a></li>
-          <li><a href="#publications" class="toc-link">Publications</a></li>
-          <li><a href="#teaching" class="toc-link">Teaching & Mentoring</a></li>
-          <li><a href="#contact" class="toc-link">Contact</a></li>
-        </ul>
+  <div class="wrap">
+    <header class="header">
+      <div class="name">Shirin Hajahmadi</div>
+      <nav class="topnav" aria-label="top navigation">
+        <a href="#cv">CV</a>
+        <a href="#publications">Publications</a>
+        <a href="#professional">Professional Activities</a>
+        <a href="#lab">XR & Privacy Lab</a>
+        <a href="#prospective">Prospective Students</a>
       </nav>
-    </aside>
+    </header>
 
-    <!-- RIGHT: content -->
-    <main>
-      <section id="about" class="section" tabindex="-1">
-        <h2>About</h2>
-        <p class="lead">I am a postdoctoral researcher in the Department of Computer Science and Engineering at the University of Bologna. I study how <strong>Extended Reality (XR)</strong>, <strong>Artificial Intelligence</strong>, and <strong>sensors</strong> can augment human cognition and support learning, communication, and everyday decision-making.</p>
-        <p>My research is situated at the intersection of HCI, immersive systems, and privacy. I design and evaluate experimental systems—from conversational virtual agents to XR-powered digital twins—with an emphasis on accessibility and inclusive user experience.</p>
-        <div class="tags" aria-label="Interests">
-          <span class="tag">XR & HCI</span>
-          <span class="tag">Privacy & Identity</span>
-          <span class="tag">Context-aware Agents</span>
-          <span class="tag">Recommender Systems</span>
-          <span class="tag">Digital Twins</span>
+    <div class="grid">
+      <!-- LEFT COLUMN -->
+      <aside class="sidebar">
+        <img src="images/shirin.jpg" alt="Portrait of Shirin Hajahmadi" class="portrait" />
+
+        <div class="side-section side-block">
+          <div class="side-title">Teaching</div>
+          <p>Fall 2025: <a href="#">XR Security & Privacy</a></p>
+          <p>Spring 2025: <a href="#">AI for Adversarial ML</a></p>
         </div>
-      </section>
 
-      <section id="research" class="section" tabindex="-1">
-        <h2>Research</h2>
-        <p>Current themes include:</p>
-        <ul class="item-list">
-          <li><strong>Identity & Privacy in Social VR:</strong> avatar identifiability, obfuscation, and consent-aware interfaces.</li>
-          <li><strong>Voice-augmented Visual Guidance:</strong> evaluating multimodal guidance (M4) in XR–DT training systems.</li>
-          <li><strong>Context-aware Multimodal Recommenders:</strong> memory-aided assistants for photo+text archives.</li>
-        </ul>
-        <p class="muted">See also: <a href="#publications">selected publications</a> and <a href="#teaching">student projects</a>.</p>
-      </section>
+        <div class="side-section side-block">
+          <div class="side-title">Contact Info</div>
+          <p>VR Lab (CSE)</p>
+          <p>University of Bologna</p>
+          <p>Bologna, Italy</p>
+          <p>Email: <a href="mailto:shirin.hajahmadi@unibo.it">shirin.hajahmadi@unibo.it</a></p>
+          <p><a href="#cv">CV (PDF)</a> · <a href="#">Scholar</a> · <a href="#">DBLP</a> · <a href="#">ORCID</a></p>
+        </div>
+      </aside>
 
-      <section id="professional" class="section" tabindex="-1">
-        <h2>Professional Activities</h2>
-        <h3>Service</h3>
-        <ul class="item-list">
-          <li>Program Committee: IEEE VR, ISMAR, ACM SUI, DRHA (various years)</li>
-          <li>Reviewer: Frontiers in VR, IEEE TVCG, Computers & Graphics</li>
-        </ul>
-        <h3>Talks (selected)</h3>
-        <ul class="item-list">
-          <li>“Cognitive Augmentation Systems through XR, AI, and Sensors,” IEEE VR 2025 (invited)</li>
-          <li>“ARELE-bot: Inclusive ELE Learning with AR and ChatGPT,” GRLMC Seminar, 2023</li>
-        </ul>
-      </section>
+      <!-- RIGHT COLUMN -->
+      <main>
+        <section id="bio">
+          <p class="lead">I am a postdoctoral researcher in Computer Science and Engineering at the University of Bologna. I work at the intersection of <strong>Extended Reality (XR)</strong>, <strong>Artificial Intelligence</strong>, and <strong>privacy-centric HCI</strong>, building and evaluating systems that augment cognition and support learning, communication, and everyday decision-making.</p>
+          <p>My background spans XR design and development, context‑aware agents, and sensor‑integrated interactive systems. I collaborate with researchers and students on projects funded by European and regional programs and my work appears in venues such as IEEE VR, ISMAR, and ACM SUI.</p>
+          <p>Prospective students interested in XR privacy, identity, or multimodal recommenders are welcome to email me with the subject line <span class="em">“XR Privacy Applicant.”</span></p>
+        </section>
 
-      <section id="publications" class="section" tabindex="-1">
-        <h2>Selected Publications</h2>
-        <ol class="pub-list">
-          <li><strong>Nightshade:</strong> Prompt-Specific Poisoning Attacks on Text-to-Image Models. <em>IEEE S&P</em>, 2024. (example placeholder)</li>
-          <li><strong>Glaze:</strong> Protecting Artists from Style Mimicry. <em>USENIX Security</em>, 2023. (example placeholder)</li>
-        </ol>
-        <p class="muted">Complete list: <a href="#">Google Scholar</a> · <a href="#">DBLP</a></p>
-      </section>
+        <section id="research">
+          <h2>My Research</h2>
+          <p>My work explores how intelligent, embodied interfaces can enhance human capabilities while preserving agency and privacy. Current directions include:</p>
+          <ul>
+            <li><strong>Copyright/Provenance & Generative AI:</strong> watermark‑resilient detectors, model‑level defenses, and post‑deployment forensics for T2I systems.</li>
+            <li><strong>Security & Privacy of Deep Models:</strong> robust learning against obfuscation/identity leakage in Social VR; evaluation toolkits for avatar identifiability.</li>
+            <li><strong>Mobile/XR Sensing for Privacy:</strong> consent‑aware interaction and selective embodiment; evaluating speech/gesture channels for privacy‑preserving collaboration.</li>
+          </ul>
+          <p><strong>Press/Media:</strong> a selection of news and coverage can be found <a href="#lab">here</a>.</p>
+        </section>
 
-      <section id="teaching" class="section" tabindex="-1">
-        <h2>Teaching & Mentoring</h2>
-        <ul class="item-list">
-          <li>XR for Cognitive Augmentation (guest lectures, 2024–2025)</li>
-          <li>Mentor: projects on avatar privacy and XR recommenders (BSc/MSc)</li>
-        </ul>
-      </section>
+        <section id="professional">
+          <h2>Professional Activities</h2>
+          <p><strong>TPC Co‑Chair:</strong> (examples) XR Privacy 2025; Workshop on Human‑Centered Security 2024.</p>
+          <p><strong>Program Committees:</strong> IEEE VR, ISMAR, ACM SUI.</p>
+          <p><strong>Reviewer:</strong> IEEE TVCG, Frontiers in VR, Computers & Graphics.</p>
+        </section>
 
-      <section id="contact" class="section" tabindex="-1">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:shirin.hajahmadi@unibo.it">shirin.hajahmadi@unibo.it</a></p>
-        <p>University of Bologna · Department of Computer Science and Engineering</p>
-      </section>
-    </main>
+        <section id="publications">
+          <h2>Selected Publications</h2>
+          <ul>
+            <li><strong>Voice‑Augmented Visual Guidance for XR‑DT Training</strong>. IEEE VR, 2025.</li>
+            <li><strong>Obfuscation Strategies for Avatar‑based Face Recognition</strong>. ISMAR, 2024.</li>
+          </ul>
+          <p>Complete list on <a href="#">Google Scholar</a> and <a href="#">DBLP</a>.</p>
+        </section>
+
+        <section id="lab">
+          <h2>XR & Privacy Lab</h2>
+          <p>We study identity, consent, and control in collaborative XR. We build open‑source tools for avatar recognition evaluation, obfuscation, and user‑in‑the‑loop privacy interfaces.</p>
+        </section>
+
+        <section id="prospective">
+          <h2>Prospective Students</h2>
+          <p>If you are interested in working with me, please include your CV, a short statement of research interest, and links to code or demos. Subject line: <span class="em">“XR Privacy Applicant.”</span></p>
+        </section>
+
+        <section id="cv">
+          <h2>CV</h2>
+          <p>Download: <a href="Shirin-Hajahmadi-CV.pdf">PDF</a>. A brief academic CV can also be provided on request.</p>
+        </section>
+
+        <footer>
+          © 2025 Shirin Hajahmadi — Built with vanilla HTML/CSS. Last updated Aug 12, 2025.
+        </footer>
+      </main>
+    </div>
   </div>
-
-  <footer>
-    © 2025 Shirin Hajahmadi · Last updated Aug 12, 2025
-  </footer>
-
-  <script>
-    // Simple scrollspy for left nav
-    const links = Array.from(document.querySelectorAll('.toc-link'));
-    const sections = links.map(a => document.querySelector(a.getAttribute('href')));
-
-    const onScroll = () => {
-      const y = window.scrollY + 120; // offset for sticky sidebar
-      let current = sections[0];
-      for (const sec of sections){
-        if (sec && sec.offsetTop <= y) current = sec;
-      }
-      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
-    };
-    document.addEventListener('scroll', onScroll, {passive:true});
-    window.addEventListener('load', onScroll);
-  </script>
 </body>
 </html>
+
 
