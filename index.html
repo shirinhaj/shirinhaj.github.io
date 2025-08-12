@@ -31,19 +31,20 @@
     /* Tabs */
     .tabs{margin-top:8px;border-bottom:1px solid var(--tab-border)}
     .tablist{display:flex;gap:4px;flex-wrap:wrap}
-    .tab{
-      appearance:none;
-      background:var(--tab);
-      border:1px solid var(--tab-border);
-      border-bottom:none;
-      padding:16px 28px;          /* bigger height & width */
-      border-radius:13px 13px 0 0;/* slightly rounder for larger size */
-      font-size:1.05rem;          /* bigger text */
-      font-weight:500;
-      color:#333;
-      cursor:pointer;
-      transition:background 0.2s;
+    .tab {
+      appearance: none;
+      background: var(--tab);
+      border: 1px solid var(--tab-border);
+      border-bottom: none;
+      padding: 28px 48px;           /* much taller & wider */
+      border-radius: 20px 20px 0 0; /* proportionally rounder corners */
+      font-size: 1.8rem;            /* much bigger text */
+      font-weight: 500;
+      color: #333;
+      cursor: pointer;
+      transition: background 0.2s;
     }
+
     .tab[aria-selected="true"]{background:var(--tab-active);color:#000}
     .tab:focus-visible{outline:2px solid #7aa7ff;outline-offset:2px}
 
