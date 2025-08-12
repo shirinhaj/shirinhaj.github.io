@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,148 +7,196 @@
   <meta name="description" content="Shirin Hajahmadi — XR • AI • Privacy & HCI" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --text: #222;
-      --muted:#666;
-      --link:#0a58a8;
-      --link-hover:#073c71;
-      --border:#e5e5e5;
-      --bg:#ffffff;
+      --bg:#fff;--text:#222;--muted:#666;--border:#e6e6e6;--link:#0a58a8;--link-hover:#083f79;--tab:#f7f7f7;--tab-active:#ffffff;--tab-border:#dcdcdc
     }
+    *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;line-height:1.65}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif;line-height:1.65}
     a{color:var(--link);text-decoration:none}
     a:hover{text-decoration:underline;color:var(--link-hover)}
 
-    /* Page width + columns (UChicago-like) */
-    .wrap{max-width:1050px;margin:0 auto;padding:18px 18px 40px}
+    /* Header */
+    .wrap{max-width:1050px;margin:0 auto;padding:18px}
     .header{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--border);padding:16px 0 8px;margin-bottom:14px}
-    .name{font-family:"Source Serif 4", Georgia, "Times New Roman", serif;font-weight:600;font-size:34px;letter-spacing:.2px;color:#2a2a2a}
+    .name{font-family:"Source Serif 4", Georgia, serif;font-weight:700;font-size:34px;letter-spacing:.2px}
 
-    .topnav{display:flex;gap:22px}
-    .topnav a{font-size:15px;letter-spacing:.3px;color:#2b2b2b}
+    /* Tabs */
+    .tabs{margin-top:8px;border-bottom:1px solid var(--tab-border)}
+    .tablist{display:flex;gap:2px;flex-wrap:wrap}
+    .tab{appearance:none;background:var(--tab);border:1px solid var(--tab-border);border-bottom:none;padding:10px 14px;border-radius:8px 8px 0 0;font-weight:500;color:#333;cursor:pointer}
+    .tab[aria-selected="true"]{background:var(--tab-active);color:#000}
+    .tab:focus-visible{outline:2px solid #7aa7ff;outline-offset:2px}
 
-    .grid{display:grid;grid-template-columns:290px 1fr;gap:32px}
-    @media (max-width: 900px){
-      .grid{grid-template-columns:1fr}
-      .sidebar{order:2}
-    }
+    .panels{border:1px solid var(--tab-border);border-radius:0 10px 10px 10px;background:#fff}
+    .panel{padding:18px}
+    .panel[hidden]{display:none}
 
-    /* Sidebar */
-    .sidebar{font-size:15px}
-    .portrait{width:100%;max-width:270px;border:1px solid var(--border)}
-    .side-section{margin-top:14px}
-    .side-title{font-variant:small-caps;color:#333;font-size:15px;margin:10px 0 6px}
-    .side-block{border-top:1px solid var(--border);padding-top:8px;margin-top:8px}
-    .side-block p{margin:4px 0}
-
-    /* Main */
-    main h2{font-family:"Source Serif 4", Georgia, serif;font-weight:600;font-size:22px;margin:20px 0 6px}
-    main h3{font-size:17px;margin:18px 0 6px}
-    main p{margin:12px 0}
-    .lead{font-size:17px}
-    .em{font-style:italic}
-
-    /* Lists */
+    /* Content typographic rhythm */
+    h2{font-family:"Source Serif 4", Georgia, serif;font-weight:700;font-size:22px;margin:6px 0 10px}
+    h3{font-size:17px;margin:18px 0 6px}
+    p{margin:12px 0}
     ul{padding-left:20px;margin:8px 0}
     li{margin:6px 0}
 
-    footer{margin-top:28px;padding-top:10px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+    /* Sidebar card (portrait + quick facts) */
+    .bio-top{display:grid;grid-template-columns:280px 1fr;gap:24px;align-items:start}
+    @media (max-width: 820px){.bio-top{grid-template-columns:1fr}}
+    .portrait{width:100%;max-width:260px;border:1px solid var(--border)}
+    .facts{font-size:15px}
+    .facts p{margin:6px 0}
+    .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .chip{border:1px solid var(--border);border-radius:999px;padding:2px 8px;font-size:12px;color:#444}
+
+    footer{margin-top:22px;padding-top:10px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="header">
       <div class="name">Shirin Hajahmadi</div>
-      <nav class="topnav" aria-label="top navigation">
-        <a href="#cv">CV</a>
-        <a href="#publications">Publications</a>
-        <a href="#professional">Professional Activities</a>
-        <a href="#lab">XR & Privacy Lab</a>
-        <a href="#prospective">Prospective Students</a>
-      </nav>
     </header>
 
-    <div class="grid">
-      <!-- LEFT COLUMN -->
-      <aside class="sidebar">
-        <img src="images/shirin.jpg" alt="Portrait of Shirin Hajahmadi" class="portrait" />
+    <!-- Top Tabs -->
+    <div class="tabs">
+      <div class="tablist" role="tablist" aria-label="Primary">
+        <button role="tab" id="tab-about" class="tab" aria-selected="true" aria-controls="panel-about">About</button>
+        <button role="tab" id="tab-publications" class="tab" aria-selected="false" aria-controls="panel-publications">Publications</button>
+        <button role="tab" id="tab-professional" class="tab" aria-selected="false" aria-controls="panel-professional">Professional Activities</button>
+        <button role="tab" id="tab-lab" class="tab" aria-selected="false" aria-controls="panel-lab">Lab</button>
+        <button role="tab" id="tab-students" class="tab" aria-selected="false" aria-controls="panel-students">Prospective Students</button>
+        <button role="tab" id="tab-cv" class="tab" aria-selected="false" aria-controls="panel-cv">CV</button>
+        <button role="tab" id="tab-contact" class="tab" aria-selected="false" aria-controls="panel-contact">Contact</button>
+      </div>
+      <div class="panels">
+        <!-- ABOUT -->
+        <section role="tabpanel" id="panel-about" class="panel" aria-labelledby="tab-about">
+          <div class="bio-top">
+            <img src="images/shirin.jpg" alt="Portrait of Shirin Hajahmadi" class="portrait" />
+            <div>
+              <p class="lead">I am a postdoctoral researcher in Computer Science and Engineering at the University of Bologna. I work at the intersection of <strong>Extended Reality (XR)</strong>, <strong>Artificial Intelligence</strong>, and <strong>privacy‑centric HCI</strong>, building and evaluating systems that augment cognition and support learning, communication, and everyday decision‑making.</p>
+              <div class="chips">
+                <span class="chip">XR & HCI</span>
+                <span class="chip">Privacy & Identity</span>
+                <span class="chip">Multimodal Recommenders</span>
+                <span class="chip">Digital Twins</span>
+              </div>
+              <div class="facts">
+                <p><strong>Affiliation:</strong> University of Bologna — VR Lab</p>
+                <p><strong>Email:</strong> <a href="mailto:shirin.hajahmadi@unibo.it">shirin.hajahmadi@unibo.it</a></p>
+                <p><a href="#" target="_blank" rel="noopener">Google Scholar</a> · <a href="#" target="_blank" rel="noopener">DBLP</a> · <a href="#" target="_blank" rel="noopener">ORCID</a></p>
+              </div>
+            </div>
+          </div>
 
-        <div class="side-section side-block">
-          <div class="side-title">Teaching</div>
-          <p>Fall 2025: <a href="#">XR Security & Privacy</a></p>
-          <p>Spring 2025: <a href="#">AI for Adversarial ML</a></p>
-        </div>
-
-        <div class="side-section side-block">
-          <div class="side-title">Contact Info</div>
-          <p>VR Lab (CSE)</p>
-          <p>University of Bologna</p>
-          <p>Bologna, Italy</p>
-          <p>Email: <a href="mailto:shirin.hajahmadi@unibo.it">shirin.hajahmadi@unibo.it</a></p>
-          <p><a href="#cv">CV (PDF)</a> · <a href="#">Scholar</a> · <a href="#">DBLP</a> · <a href="#">ORCID</a></p>
-        </div>
-      </aside>
-
-      <!-- RIGHT COLUMN -->
-      <main>
-        <section id="bio">
-          <p class="lead">I am a postdoctoral researcher in Computer Science and Engineering at the University of Bologna. I work at the intersection of <strong>Extended Reality (XR)</strong>, <strong>Artificial Intelligence</strong>, and <strong>privacy-centric HCI</strong>, building and evaluating systems that augment cognition and support learning, communication, and everyday decision-making.</p>
-          <p>My background spans XR design and development, context‑aware agents, and sensor‑integrated interactive systems. I collaborate with researchers and students on projects funded by European and regional programs and my work appears in venues such as IEEE VR, ISMAR, and ACM SUI.</p>
-          <p>Prospective students interested in XR privacy, identity, or multimodal recommenders are welcome to email me with the subject line <span class="em">“XR Privacy Applicant.”</span></p>
-        </section>
-
-        <section id="research">
-          <h2>My Research</h2>
-          <p>My work explores how intelligent, embodied interfaces can enhance human capabilities while preserving agency and privacy. Current directions include:</p>
+          <h2 style="margin-top:18px">My Research</h2>
+          <p>Current directions include:</p>
           <ul>
-            <li><strong>Copyright/Provenance & Generative AI:</strong> watermark‑resilient detectors, model‑level defenses, and post‑deployment forensics for T2I systems.</li>
-            <li><strong>Security & Privacy of Deep Models:</strong> robust learning against obfuscation/identity leakage in Social VR; evaluation toolkits for avatar identifiability.</li>
-            <li><strong>Mobile/XR Sensing for Privacy:</strong> consent‑aware interaction and selective embodiment; evaluating speech/gesture channels for privacy‑preserving collaboration.</li>
+            <li><strong>Copyright/Provenance & Generative AI:</strong> detection, defenses, and forensics for T2I systems.</li>
+            <li><strong>Security & Privacy of Deep Models:</strong> avatar identifiability, obfuscation, and consent‑aware interfaces in Social VR.</li>
+            <li><strong>Mobile/XR Sensing for Privacy:</strong> selective embodiment and privacy‑preserving collaboration mechanisms.</li>
           </ul>
-          <p><strong>Press/Media:</strong> a selection of news and coverage can be found <a href="#lab">here</a>.</p>
         </section>
 
-        <section id="professional">
-          <h2>Professional Activities</h2>
-          <p><strong>TPC Co‑Chair:</strong> (examples) XR Privacy 2025; Workshop on Human‑Centered Security 2024.</p>
-          <p><strong>Program Committees:</strong> IEEE VR, ISMAR, ACM SUI.</p>
-          <p><strong>Reviewer:</strong> IEEE TVCG, Frontiers in VR, Computers & Graphics.</p>
-        </section>
-
-        <section id="publications">
+        <!-- PUBLICATIONS -->
+        <section role="tabpanel" id="panel-publications" class="panel" aria-labelledby="tab-publications" hidden>
           <h2>Selected Publications</h2>
           <ul>
-            <li><strong>Voice‑Augmented Visual Guidance for XR‑DT Training</strong>. IEEE VR, 2025.</li>
-            <li><strong>Obfuscation Strategies for Avatar‑based Face Recognition</strong>. ISMAR, 2024.</li>
+            <li><strong>Voice‑Augmented Visual Guidance for XR–DT Training</strong>. IEEE VR, 2025.</li>
+            <li><strong>Evaluating Obfuscation Strategies for Avatar‑based Identification</strong>. ISMAR, 2024.</li>
           </ul>
-          <p>Complete list on <a href="#">Google Scholar</a> and <a href="#">DBLP</a>.</p>
+          <p>See complete list on <a href="#" target="_blank">Google Scholar</a> and <a href="#" target="_blank">DBLP</a>.</p>
         </section>
 
-        <section id="lab">
+        <!-- PROFESSIONAL -->
+        <section role="tabpanel" id="panel-professional" class="panel" aria-labelledby="tab-professional" hidden>
+          <h2>Professional Activities</h2>
+          <h3>Service</h3>
+          <ul>
+            <li>Program Committee: IEEE VR, ISMAR, ACM SUI</li>
+            <li>Reviewer: IEEE TVCG, Frontiers in VR, Computers & Graphics</li>
+          </ul>
+          <h3>Talks (selected)</h3>
+          <ul>
+            <li>“Cognitive Augmentation Systems through XR, AI, and Sensors,” IEEE VR 2025</li>
+            <li>“ARELE‑bot: Inclusive ELE Learning with AR and ChatGPT,” GRLMC Seminar</li>
+          </ul>
+        </section>
+
+        <!-- LAB -->
+        <section role="tabpanel" id="panel-lab" class="panel" aria-labelledby="tab-lab" hidden>
           <h2>XR & Privacy Lab</h2>
           <p>We study identity, consent, and control in collaborative XR. We build open‑source tools for avatar recognition evaluation, obfuscation, and user‑in‑the‑loop privacy interfaces.</p>
         </section>
 
-        <section id="prospective">
+        <!-- STUDENTS -->
+        <section role="tabpanel" id="panel-students" class="panel" aria-labelledby="tab-students" hidden>
           <h2>Prospective Students</h2>
-          <p>If you are interested in working with me, please include your CV, a short statement of research interest, and links to code or demos. Subject line: <span class="em">“XR Privacy Applicant.”</span></p>
+          <p>Please include your CV, a short statement of research interest, and links to code or demos. Use the subject line <em>“XR Privacy Applicant.”</em></p>
         </section>
 
-        <section id="cv">
+        <!-- CV -->
+        <section role="tabpanel" id="panel-cv" class="panel" aria-labelledby="tab-cv" hidden>
           <h2>CV</h2>
-          <p>Download: <a href="Shirin-Hajahmadi-CV.pdf">PDF</a>. A brief academic CV can also be provided on request.</p>
+          <p>Download my full CV: <a href="Shirin-Hajahmadi-CV.pdf">PDF</a>.</p>
         </section>
 
-        <footer>
-          © 2025 Shirin Hajahmadi — Built with vanilla HTML/CSS. Last updated Aug 12, 2025.
-        </footer>
-      </main>
+        <!-- CONTACT -->
+        <section role="tabpanel" id="panel-contact" class="panel" aria-labelledby="tab-contact" hidden>
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:shirin.hajahmadi@unibo.it">shirin.hajahmadi@unibo.it</a></p>
+          <p>University of Bologna · Department of Computer Science and Engineering</p>
+        </section>
+      </div>
     </div>
+
+    <footer>
+      © 2025 Shirin Hajahmadi · Last updated Aug 12, 2025
+    </footer>
   </div>
+
+  <script>
+    // Accessible Tabs (WAI-ARIA pattern + hash routing)
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+
+    function activateTab(tab, setHash = true){
+      tabs.forEach(t => t.setAttribute('aria-selected', String(t===tab)));
+      panels.forEach(p => p.hidden = (p.id !== tab.getAttribute('aria-controls')));
+      tab.focus({preventScroll:true});
+      if(setHash){
+        const id = tab.getAttribute('aria-controls').replace('panel-','');
+        history.replaceState(null, '', '#'+id);
+      }
+    }
+
+    // Click
+    tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab)));
+
+    // Keyboard navigation (arrow keys, Home/End)
+    document.querySelector('[role="tablist"]').addEventListener('keydown', e => {
+      const i = tabs.findIndex(t => t.getAttribute('aria-selected')==='true');
+      if(['ArrowRight','ArrowLeft','Home','End'].includes(e.key)) e.preventDefault();
+      if(e.key==='ArrowRight') activateTab(tabs[(i+1)%tabs.length]);
+      if(e.key==='ArrowLeft') activateTab(tabs[(i-1+tabs.length)%tabs.length]);
+      if(e.key==='Home') activateTab(tabs[0]);
+      if(e.key==='End') activateTab(tabs[tabs.length-1]);
+    });
+
+    // Deep link support (#publications etc.)
+    function openFromHash(){
+      const h = location.hash.replace('#','');
+      if(!h) return;
+      const tab = document.querySelector(`[role="tab"][aria-controls="panel-${h}"]`);
+      if(tab) activateTab(tab, false);
+    }
+    window.addEventListener('hashchange', openFromHash);
+    openFromHash();
+  </script>
 </body>
 </html>
+
 
 
